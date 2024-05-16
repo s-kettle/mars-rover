@@ -27,12 +27,20 @@ public class Position {
         return facing;
     }
 
-    public void setX(int x) {
-        this.x = x;
+    public void setX(int x) throws IllegalMovementException {
+        if (x <= 5 && x >= 0) {
+            this.x = x;
+        } else {
+            throw new IllegalMovementException("Cannot move, out of plateau bounds.");
+        }
     }
 
-    public void setY(int y) {
-        this.y = y;
+    public void setY(int y) throws IllegalMovementException {
+        if (y <= 5 && y >= 0) {
+            this.y = y;
+        } else {
+            throw new IllegalMovementException("Cannot move, out of plateau bounds.");
+        }
     }
 
     public void setFacing(Direction facing) {
