@@ -18,7 +18,12 @@ public class MissionControl {
     }
 
     public void implementInstructions(List<Instruction> instructions) {
-
+        for (Instruction i : instructions) {
+            switch (i) {
+                case M -> rover.move();
+                case L, R -> rover.rotate(i);
+            }
+        }
     }
 
     public void printRoverLocation() {
