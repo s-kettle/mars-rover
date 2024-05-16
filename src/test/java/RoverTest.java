@@ -31,6 +31,91 @@ class RoverTest {
     }
 
     @Test
-    void rotate() {
+    @DisplayName("North facing rover direction updates on rotate(L)")
+    void rotateTestNorthL() {
+        Position position = new Position(Direction.N);
+        Rover rover = new Rover(position);
+
+        rover.rotate(Instruction.L);
+        assertEquals(Direction.W, rover.getPosition().getFacing());
+
     }
+
+    @Test
+    @DisplayName("North facing rover direction updates on rotate(R)")
+    void rotateTestNorthR() {
+        Position position = new Position(Direction.N);
+        Rover rover = new Rover(position);
+
+        rover.rotate(Instruction.R);
+        assertEquals(Direction.E, rover.getPosition().getFacing());
+
+    }
+
+    @Test
+    @DisplayName("East facing rover direction updates on rotate(L)")
+    void rotateTestEastL() {
+        Position position = new Position(Direction.E);
+        Rover rover = new Rover(position);
+
+        rover.rotate(Instruction.L);
+        assertEquals(Direction.N, rover.getPosition().getFacing());
+
+    }
+
+    @Test
+    @DisplayName("East facing rover direction updates on rotate(R)")
+    void rotateTestEastR() {
+        Position position = new Position(Direction.E);
+        Rover rover = new Rover(position);
+
+        rover.rotate(Instruction.R);
+        assertEquals(Direction.S, rover.getPosition().getFacing());
+
+    }
+
+    @Test
+    @DisplayName("South facing rover direction updates on rotate(L)")
+    void rotateTestSouthL() {
+        Position position = new Position(Direction.S);
+        Rover rover = new Rover(position);
+
+        rover.rotate(Instruction.L);
+        assertEquals(Direction.E, rover.getPosition().getFacing());
+
+    }
+
+    @Test
+    @DisplayName("South facing rover direction updates on rotate(R)")
+    void rotateTestSouthR() {
+        Position position = new Position(Direction.S);
+        Rover rover = new Rover(position);
+
+        rover.rotate(Instruction.R);
+        assertEquals(Direction.W, rover.getPosition().getFacing());
+
+    }
+
+    @Test
+    @DisplayName("West facing rover direction updates on rotate(L)")
+    void rotateTestWestL() {
+        Position position = new Position(Direction.W);
+        Rover rover = new Rover(position);
+
+        rover.rotate(Instruction.L);
+        assertEquals(Direction.S, rover.getPosition().getFacing());
+
+    }
+
+    @Test
+    @DisplayName("West facing rover direction updates on rotate(R)")
+    void rotateTestWestR() {
+        Position position = new Position(Direction.W);
+        Rover rover = new Rover(position);
+
+        rover.rotate(Instruction.R);
+        assertEquals(Direction.N, rover.getPosition().getFacing());
+
+    }
+
 }
