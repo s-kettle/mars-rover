@@ -1,6 +1,9 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class InputParserTest {
@@ -22,11 +25,19 @@ class InputParserTest {
     }
 
     @Test
-    @DisplayName("Invalid coordinates throws IllegalArgumentException")
+    @DisplayName("Invalid negative coordinates throws IllegalArgumentException")
     void parsePlateauCoordinatesTest2() {
         assertThrows(IllegalArgumentException.class, () -> ip.parsePlateauCoordinates("-1 0"));
         assertThrows(IllegalArgumentException.class, () -> ip.parsePlateauCoordinates("-1 -2"));
         assertThrows(IllegalArgumentException.class, () -> ip.parsePlateauCoordinates("3 -1"));
+    }
+
+    @Test
+    @DisplayName("Invalid coordinates over 5 throw IllegalArgumentException")
+    void parsePlateauCoordinatesTest3() {
+        assertThrows(IllegalArgumentException.class, () -> ip.parsePlateauCoordinates("6 0"));
+        assertThrows(IllegalArgumentException.class, () -> ip.parsePlateauCoordinates("0 6"));
+        assertThrows(IllegalArgumentException.class, () -> ip.parsePlateauCoordinates("7 -1"));
     }
 
     @Test
@@ -46,5 +57,31 @@ class InputParserTest {
         assertEquals(expectedPosition2.getX(), testPosition2.getX());
         assertEquals(expectedPosition2.getY(), testPosition2.getY());
         assertEquals(expectedPosition2.getFacing(), testPosition2.getFacing());
+    }
+
+    @Test
+    @DisplayName("parseInstruction returns correct list from string")
+    void parseInstruction() {
+
+        List<Instruction> expectedList  = new ArrayList<>(List.of(
+                Instruction.L,
+                Instruction.L,
+                Instruction.M,
+                Instruction.R
+        ));
+
+        List<Instruction> expectedList2 = new ArrayList<>(List.of(
+                Instruction.M,
+                Instruction.M,
+                Instruction.M,
+                Instruction.L
+        ));
+
+        List<Instruction> testList  = ip.parseInstruction("LLMR");
+        List<Instruction> testList2 = ip.parseInstruction("MMML");
+
+        assertEquals(expectedList, testList);
+        assertEquals(expectedList2, testList2);
+
     }
 }

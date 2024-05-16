@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class InputParser {
 
     public PlateauSize parsePlateauCoordinates(String input) {
@@ -9,6 +12,10 @@ public class InputParser {
 
         if (positionX < 0 || positionY < 0) {
             throw new IllegalArgumentException("Coordinates must be more than 0");
+        }
+
+        if (positionX > 5 || positionY > 5) {
+            throw new IllegalArgumentException("Maximum plateau size is 5, 5");
         }
 
         return new PlateauSize(positionX, positionY);
@@ -26,11 +33,17 @@ public class InputParser {
 
     }
 
-//    public Instruction parseInstruction(String input) {
-//
-//
-//
-//
-//    }
+    public List<Instruction> parseInstruction(String input) {
+
+        List<Instruction> instructionList = new ArrayList<>();
+        String[] instructions = input.split("");
+
+        for (String instruction : instructions) {
+            instructionList.add(Instruction.valueOf(instruction));
+        }
+
+        return instructionList;
+
+    }
 
 }
