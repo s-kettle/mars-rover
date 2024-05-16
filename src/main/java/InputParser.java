@@ -3,13 +3,23 @@ public class InputParser {
     public PlateauSize parsePlateauCoordinates(String string) {
 
         String[] stringCoordinates = string.split(" ");
-        int[] intCoordinates = new int[stringCoordinates.length];
 
-        for (int i = 0; i < stringCoordinates.length; i++) {
-            intCoordinates[i] = Integer.parseInt(stringCoordinates[i]);
-        }
+        int positionX = Integer.parseInt(stringCoordinates[0]);
+        int positionY = Integer.parseInt(stringCoordinates[1]);
 
-        return new PlateauSize(intCoordinates[0], intCoordinates[1]);
+        return new PlateauSize(positionX, positionY);
 
     }
+
+    public Position parsePosition(String string) {
+
+        String[] inputData = string.split(" ");
+
+        int positionX = Integer.parseInt(inputData[0]);
+        int positionY = Integer.parseInt(inputData[1]);
+
+        return new Position(positionX, positionY, Direction.valueOf(inputData[2]));
+
+    }
+
 }
