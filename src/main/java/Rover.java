@@ -24,11 +24,15 @@ public class Rover {
 
     public void move(){
 
-        switch (position.getFacing()) {
-            case N -> this.position.setY(position.getY() + 1);
-            case E -> this.position.setX(position.getX() + 1);
-            case S -> this.position.setY(position.getY() - 1);
-            case W -> this.position.setX(position.getX() - 1);
+        try {
+            switch (position.getFacing()) {
+                case N -> this.position.setY(position.getY() + 1);
+                case E -> this.position.setX(position.getX() + 1);
+                case S -> this.position.setY(position.getY() - 1);
+                case W -> this.position.setX(position.getX() - 1);
+            }
+        } catch (IllegalMovementException e) {
+            System.out.println(e.getMessage());
         }
     }
 

@@ -118,4 +118,20 @@ class RoverTest {
 
     }
 
+    @Test
+    @DisplayName("Rover will not move out of plateau bounds")
+    void moveExceptionTest() {
+        Position eastPosition = new Position(5, 5, Direction.E);
+        Position northPosition = new Position(5, 5, Direction.N);
+        Rover roverOutOfBoundsX = new Rover(eastPosition);
+        Rover roverOutOfBoundsY = new Rover(northPosition);
+
+        roverOutOfBoundsX.move();
+        roverOutOfBoundsY.move();
+
+        assertEquals(5, roverOutOfBoundsX.getPosition().getX());
+        assertEquals(5, roverOutOfBoundsY.getPosition().getY());
+
+    }
+
 }
