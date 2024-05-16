@@ -1,24 +1,21 @@
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class InputParser {
 
-    public PlateauSize parsePlateauCoordinates(String input) {
+    public PlateauSize parsePlateauCoordinates(String input) throws IllegalArgumentException {
 
         String[] stringCoordinates = input.split(" ");
 
         int positionX = Integer.parseInt(stringCoordinates[0]);
         int positionY = Integer.parseInt(stringCoordinates[1]);
 
-        if (positionX < 0 || positionY < 0) {
-            throw new IllegalArgumentException("Coordinates must be more than 0");
+        if ((positionX >= 0 && positionY >= 0) && (positionX <= 5 && positionY <= 5)) {
+            return new PlateauSize(positionX, positionY);
+        } else {
+            throw new IllegalArgumentException();
         }
-
-        if (positionX > 5 || positionY > 5) {
-            throw new IllegalArgumentException("Maximum plateau size is 5, 5");
-        }
-
-        return new PlateauSize(positionX, positionY);
 
     }
 
