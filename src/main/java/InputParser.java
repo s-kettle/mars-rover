@@ -1,19 +1,23 @@
 public class InputParser {
 
-    public PlateauSize parsePlateauCoordinates(String string) {
+    public PlateauSize parsePlateauCoordinates(String input) {
 
-        String[] stringCoordinates = string.split(" ");
+        String[] stringCoordinates = input.split(" ");
 
         int positionX = Integer.parseInt(stringCoordinates[0]);
         int positionY = Integer.parseInt(stringCoordinates[1]);
+
+        if (positionX < 0 || positionY < 0) {
+            throw new IllegalArgumentException("Coordinates must be more than 0");
+        }
 
         return new PlateauSize(positionX, positionY);
 
     }
 
-    public Position parsePosition(String string) {
+    public Position parsePosition(String input) {
 
-        String[] inputData = string.split(" ");
+        String[] inputData = input.split(" ");
 
         int positionX = Integer.parseInt(inputData[0]);
         int positionY = Integer.parseInt(inputData[1]);
@@ -21,5 +25,12 @@ public class InputParser {
         return new Position(positionX, positionY, Direction.valueOf(inputData[2]));
 
     }
+
+//    public Instruction parseInstruction(String input) {
+//
+//
+//
+//
+//    }
 
 }

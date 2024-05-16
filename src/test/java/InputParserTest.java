@@ -22,6 +22,14 @@ class InputParserTest {
     }
 
     @Test
+    @DisplayName("Invalid coordinates throws IllegalArgumentException")
+    void parsePlateauCoordinatesTest2() {
+        assertThrows(IllegalArgumentException.class, () -> ip.parsePlateauCoordinates("-1 0"));
+        assertThrows(IllegalArgumentException.class, () -> ip.parsePlateauCoordinates("-1 -2"));
+        assertThrows(IllegalArgumentException.class, () -> ip.parsePlateauCoordinates("3 -1"));
+    }
+
+    @Test
     @DisplayName("Position created from input string correctly")
     void parsePositionTest() {
 
