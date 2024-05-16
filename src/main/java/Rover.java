@@ -1,14 +1,25 @@
 
 public class Rover {
 
-    private Position position;
+    private final String name;
+    private final Position position;
 
     public Rover(Position position) {
+        this.name = "Mars Rover";
         this.position = position;
+    }
+
+    public Rover(Position position, String name) {
+        this.position = position;
+        this.name = name;
     }
 
     public Position getPosition() {
         return position;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void move(){
