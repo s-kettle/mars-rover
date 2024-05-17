@@ -32,7 +32,8 @@ class MissionControlTest {
         Position expectedPosition = new Position(1, 2, Direction.E);
 
         missionControl.addRover(rover);
-        missionControl.implementInstructions(instructionList);
+        missionControl.setInstructions(instructionList);
+        missionControl.implementInstructions();
 
         assertEquals(expectedPosition.getX(), missionControl.getRover().getPosition().getX());
         assertEquals(expectedPosition.getY(), missionControl.getRover().getPosition().getY());

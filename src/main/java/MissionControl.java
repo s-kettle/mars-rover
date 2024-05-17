@@ -4,7 +4,7 @@ public class MissionControl {
 
     private Plateau plateau;
     private Rover rover;
-    private String instructions;
+    private List<Instruction> instructions;
 
     public MissionControl(Plateau plateau) {
         this.plateau = plateau;
@@ -22,15 +22,12 @@ public class MissionControl {
         return rover;
     }
 
-    public String getInstructions() {
-        return instructions;
-    }
-
-    public void setInstructions(String instructions) {
+    public void setInstructions(List<Instruction> instructions) {
         this.instructions = instructions;
     }
 
-    public void implementInstructions(List<Instruction> instructions) {
+    public void implementInstructions() {
+
         for (Instruction i : instructions) {
 
             switch (i) {
