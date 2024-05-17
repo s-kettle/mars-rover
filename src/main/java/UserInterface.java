@@ -61,8 +61,24 @@ public class UserInterface {
 
     public void getInstructionInput() {
         System.out.println(MAGENTA + "\n---- SEND INSTRUCTIONS ----");
-        System.out.print(YELLOW + "Please enter instructions for \"" + missionControl.getRover().getName() + "\" (L, R, M): " + RESET);
-        missionControl.setInstructions(scanner.nextLine());
+
+        System.out.println(YELLOW + "Please enter in format MLR, e.g. MMLMRM" + RESET);
+        System.out.println(CYAN + "M: Move forward");
+        System.out.println("L: Rotate left");
+        System.out.println("R: Move right\n" + RESET);
+
+        System.out.print(YELLOW + "Enter instructions for \"" + missionControl.getRover().getName() + "\": " + RESET);
+
+        while (true) {
+            try {
+                missionControl.setInstructions(inputParser.parseInstruction(scanner.nextLine()));
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println(RED + "Invalid input");
+                System.out.println("Instructions must in format MLR with no spaces." + RESET);
+                System.out.print(YELLOW + "Please enter new instructions: " + RESET);
+            }
+        }
     }
 
     public void printPlateauSuccessMessage() {
@@ -77,7 +93,7 @@ public class UserInterface {
     }
 
     public void printImplementation() {
-        missionControl.implementInstructions(inputParser.parseInstruction(missionControl.getInstructions()));
+        missionControl.implementInstructions();
         missionControl.printRoverLocation();
     }
 
