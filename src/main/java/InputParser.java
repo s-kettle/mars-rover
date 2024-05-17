@@ -29,12 +29,20 @@ public class InputParser {
 
     }
 
-    public Position parsePosition(String input) {
+    public Position parsePosition(String input) throws IllegalArgumentException, ArrayIndexOutOfBoundsException {
 
         String[] inputData = input.split(" ");
 
+        if (inputData.length != 3) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+
         int positionX = Integer.parseInt(inputData[0]);
         int positionY = Integer.parseInt(inputData[1]);
+
+        if (positionX < 0 || positionX > 5 || positionY < 0 || positionY > 5 ) {
+            throw new IllegalArgumentException();
+        }
 
         return new Position(positionX, positionY, Direction.valueOf(inputData[2]));
 

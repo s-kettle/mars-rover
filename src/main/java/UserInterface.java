@@ -55,11 +55,23 @@ public class UserInterface {
         System.out.println(MAGENTA + "\n---- DROP A ROVER ----" + RESET);
         System.out.print(YELLOW + "What is this rover called? " + RESET);
         String roverNameInput = scanner.nextLine();
-        System.out.print(YELLOW + "Please enter a starting location and heading (x, y, direction): " + RESET);
-        String roverPositionInput = scanner.nextLine();
 
-        Rover rover = new Rover(inputParser.parsePosition(roverPositionInput), roverNameInput);
-        missionControl.addRover(rover);
+        System.out.print(YELLOW + "Please enter a starting location and heading (x, y, direction): " + RESET);
+
+        while (true) {
+            try {
+                Position roverPositionInput = inputParser.parsePosition(scanner.nextLine());
+                Rover rover = new Rover(roverPositionInput, roverNameInput);
+                missionControl.addRover(rover);
+                break;
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println(RED + "Invalid input. Enter 3 space-separated values: x y d" + RESET);
+                System.out.print(YELLOW + "Please enter correct positional data: " + RESET);
+            } catch (IllegalArgumentException e) {
+                System.out.println(RED + "Coordinates cannot be out of plateau bounds" + RESET);
+                System.out.print(YELLOW + "Please enter correct positional data: " + RESET);
+            }
+        }
     }
 
     public void getInstructionInput() {
@@ -90,7 +102,7 @@ public class UserInterface {
     }
 
     public void printRoverSuccessMessage() {
-        System.out.println(GREEN + "Rover \"" + missionControl.getRover().getName() + "\" successfully dropped at coordinates " +
+        System.out.println(GREEN + "\nRover \"" + missionControl.getRover().getName() + "\" successfully dropped at coordinates " +
                 missionControl.getRover().getPosition().getX() + ", " + missionControl.getRover().getPosition().getY() + " facing " +
                 missionControl.getRover().getPosition().getFacing() + "." + RESET);
     }
