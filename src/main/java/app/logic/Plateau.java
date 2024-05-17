@@ -8,27 +8,23 @@ import java.util.List;
 public class Plateau {
 
     private final PlateauSize size;
-    private List<Rover> rovers;
+    private int[][] plateauGrid;
 
     public Plateau(PlateauSize size) {
         this.size = size;
-        this.rovers = new ArrayList<Rover>();
+        generateGrid(size);
     }
 
     public PlateauSize getSize() {
         return size;
     }
 
-    public void dropRover(Rover rover) {
-        rovers.add(rover);
+    public int[][] getPlateauGrid() {
+        return plateauGrid;
     }
 
-    public boolean isEmpty(int x, int y) {
-        for (Rover rover : rovers) {
-            if (rover.getPosition().getX() == x && rover.getPosition().getY() == y) {
-                return false;
-            }
-        }
-        return true;
+    public void generateGrid(PlateauSize plateauSize) {
+        this.plateauGrid = new int[plateauSize.getX()][plateauSize.getY()];
     }
+
 }
