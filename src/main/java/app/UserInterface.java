@@ -105,12 +105,12 @@ public class UserInterface {
     }
 
     public void printPlateauSuccessMessage() {
-        System.out.println(GREEN + "\napp.logic.Plateau created successfully - dimensions: " +
+        System.out.println(GREEN + "\nPlateau created successfully - dimensions: " +
                 missionControl.getPlateau().getSize().getX() + ", " + missionControl.getPlateau().getSize().getY() + RESET);
     }
 
     public void printRoverSuccessMessage() {
-        System.out.println(GREEN + "\napp.logic.Rover \"" + missionControl.getRover().getName() + "\" successfully dropped at coordinates " +
+        System.out.println(GREEN + "\nRover \"" + missionControl.getRover().getName() + "\" successfully dropped at coordinates " +
                 missionControl.getRover().getPosition().getX() + ", " + missionControl.getRover().getPosition().getY() + " facing " +
                 missionControl.getRover().getPosition().getFacing() + "." + RESET);
     }
@@ -123,7 +123,7 @@ public class UserInterface {
     public void isUserFinished() {
         System.out.println(CYAN + "\nWould you like to place a new rover? (Y/N)" + RESET);
         if (scanner.nextLine().equalsIgnoreCase("N")) {
-            System.out.println(MAGENTA + "\nThank you for using the Mars app.logic.Rover Programme.");
+            System.out.println(MAGENTA + "\nThank you for using the Mars Rover Programme.");
             System.out.println("Goodbye!");
             finished = true;
         }
