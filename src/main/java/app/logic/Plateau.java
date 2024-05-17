@@ -1,3 +1,7 @@
+package app.logic;
+
+import app.datatypes.PlateauSize;
+
 import java.util.ArrayList;
 import java.util.List;
 

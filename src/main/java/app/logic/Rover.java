@@ -1,3 +1,9 @@
+package app.logic;
+
+import app.datatypes.Direction;
+import app.datatypes.IllegalMovementException;
+import app.datatypes.Instruction;
+import app.datatypes.Position;
 
 public class Rover {
 
@@ -5,7 +11,7 @@ public class Rover {
     private final Position position;
 
     public Rover(Position position) {
-        this.name = "Mars Rover";
+        this.name = "Mars app.logic.Rover";
         this.position = position;
     }
 

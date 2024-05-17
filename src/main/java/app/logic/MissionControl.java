@@ -1,3 +1,7 @@
+package app.logic;
+
+import app.datatypes.Instruction;
+
 import java.util.List;
 
 public class MissionControl {

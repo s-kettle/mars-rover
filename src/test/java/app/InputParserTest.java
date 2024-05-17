@@ -1,3 +1,10 @@
+package app;
+
+import app.datatypes.Direction;
+import app.datatypes.Instruction;
+import app.datatypes.PlateauSize;
+import app.datatypes.Position;
+import app.parsers.InputParser;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +18,7 @@ class InputParserTest {
     InputParser ip = new InputParser();
 
     @Test
-    @DisplayName("PlateauSize created from input string correctly")
+    @DisplayName("app.datatypes.PlateauSize created from input string correctly")
     void parsePlateauCoordinatesTest() {
 
         PlateauSize expectedPlateau  = new PlateauSize(5, 5);
@@ -57,7 +64,7 @@ class InputParserTest {
     }
 
     @Test
-    @DisplayName("Position created from input string correctly")
+    @DisplayName("app.datatypes.Position created from input string correctly")
     void parsePositionTest() {
 
         Position expectedPosition  = new Position(1, 5, Direction.N);

@@ -1,3 +1,9 @@
+package app;
+
+import app.datatypes.Direction;
+import app.datatypes.Instruction;
+import app.datatypes.Position;
+import app.logic.Rover;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -6,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class RoverTest {
 
     @Test
-    @DisplayName("Rover position updates on move()")
+    @DisplayName("app.logic.Rover position updates on move()")
     void moveTest() {
 
         Position positionNorth = new Position(2, 2, Direction.N);
@@ -119,7 +125,7 @@ class RoverTest {
     }
 
     @Test
-    @DisplayName("Rover will not move out of plateau bounds")
+    @DisplayName("app.logic.Rover will not move out of plateau bounds")
     void moveExceptionTest() {
         Position eastPosition = new Position(5, 5, Direction.E);
         Position northPosition = new Position(5, 5, Direction.N);
