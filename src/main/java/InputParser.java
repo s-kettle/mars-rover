@@ -30,16 +30,20 @@ public class InputParser {
 
     }
 
-    public List<Instruction> parseInstruction(String input) {
+    public List<Instruction> parseInstruction(String input) throws IllegalArgumentException {
 
         List<Instruction> instructionList = new ArrayList<>();
-        String[] instructions = input.split("");
 
-        for (String instruction : instructions) {
-            instructionList.add(Instruction.valueOf(instruction));
+        try {
+            String[] instructions = input.split("");
+            for (String instruction : instructions) {
+                instructionList.add(Instruction.valueOf(instruction));
+            }
+            return instructionList;
+
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException();
         }
-
-        return instructionList;
 
     }
 

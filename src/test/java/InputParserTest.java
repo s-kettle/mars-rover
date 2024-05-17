@@ -15,10 +15,10 @@ class InputParserTest {
     void parsePlateauCoordinatesTest() {
 
         PlateauSize expectedPlateau  = new PlateauSize(5, 5);
-        PlateauSize expectedPlateau2 = new PlateauSize(10, 5);
+        PlateauSize expectedPlateau2 = new PlateauSize(3, 3);
 
         PlateauSize testPlateau  = ip.parsePlateauCoordinates("5 5");
-        PlateauSize testPlateau2 = ip.parsePlateauCoordinates("10 5");
+        PlateauSize testPlateau2 = ip.parsePlateauCoordinates("3 3");
 
         assertEquals(expectedPlateau.getX(), testPlateau.getX());
         assertEquals(expectedPlateau2.getY(), testPlateau2.getY());
@@ -82,6 +82,14 @@ class InputParserTest {
 
         assertEquals(expectedList, testList);
         assertEquals(expectedList2, testList2);
+    }
 
+    @Test
+    @DisplayName("parseInstruction invalid instructions throw exception")
+    void parseInstructionException() {
+        assertThrows(IllegalArgumentException.class, () -> ip.parseInstruction("DSS"));
+        assertThrows(IllegalArgumentException.class, () -> ip.parseInstruction("!!!"));
+        assertThrows(IllegalArgumentException.class, () -> ip.parseInstruction("123"));
+        assertThrows(IllegalArgumentException.class, () -> ip.parseInstruction("LMR RM"));
     }
 }
