@@ -4,6 +4,8 @@ import app.datatypes.PlateauSize;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class PlateauTest {
@@ -24,5 +26,14 @@ class PlateauTest {
         assertArrayEquals(expectedArray, plateau.getPlateauGrid());
         assertArrayEquals(expectedArray1, plateau1.getPlateauGrid());
 
+    }
+
+    @Test
+    @DisplayName("populateSamples fills array randomly")
+    void populateSamplesTest() {
+        Plateau p = new Plateau(new PlateauSize(5, 5));
+        for (int i = 0; i < p.getPlateauGrid().length ; i++) {
+            System.out.println(Arrays.toString(p.getPlateauGrid()[i]));
+        }
     }
 }

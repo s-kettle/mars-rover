@@ -47,4 +47,15 @@ public class MissionControl {
                 rover.getPosition().getY() + " " +
                 rover.getPosition().getFacing());
     }
+
+    public String instructRoverToTakeSample() {
+        switch (plateau.getPlateauGrid()[rover.getPosition().getX()][rover.getPosition().getY()]) {
+            case 1 -> { return "You found Titanium!"; }
+            case 2 -> { return "You found Zinc!"; }
+            case 3 -> { return "You found Copper!"; }
+            case 4 -> { return "You found Aluminium!"; }
+            case 5 -> { return "Wow! You struck Gold!!"; }
+        }
+        return null;
+    }
 }

@@ -1,9 +1,9 @@
 package app.logic;
 
 import app.datatypes.PlateauSize;
+import app.sampletype.Titanium;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Random;
 
 public class Plateau {
 
@@ -13,6 +13,7 @@ public class Plateau {
     public Plateau(PlateauSize size) {
         this.size = size;
         generateGrid(size);
+        populateSamples();
     }
 
     public PlateauSize getSize() {
@@ -25,6 +26,15 @@ public class Plateau {
 
     public void generateGrid(PlateauSize plateauSize) {
         this.plateauGrid = new int[plateauSize.getX()][plateauSize.getY()];
+    }
+
+    public void populateSamples(){
+        for (int i = 0; i < plateauGrid[0].length; i++) {
+            for (int j = 0; j < plateauGrid[1].length; j++) {
+                Random r = new Random();
+                plateauGrid[i][j] = r.nextInt(1, 6);
+            }
+        }
     }
 
 }
