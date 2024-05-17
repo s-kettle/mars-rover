@@ -1,7 +1,5 @@
 # The Mars Rover Project 🚀
 
----
-
 ## The Brief
 
 A rover has been delivered to Mars on a square/rectangular plateau, which has been divided into an equal grid 
