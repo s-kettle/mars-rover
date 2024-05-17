@@ -4,17 +4,27 @@ import java.util.List;
 
 public class InputParser {
 
-    public PlateauSize parsePlateauCoordinates(String input) throws IllegalArgumentException {
+    public PlateauSize parsePlateauCoordinates(String input) throws IllegalArgumentException,
+            ArrayIndexOutOfBoundsException {
 
         String[] stringCoordinates = input.split(" ");
 
-        int positionX = Integer.parseInt(stringCoordinates[0]);
-        int positionY = Integer.parseInt(stringCoordinates[1]);
-
-        if ((positionX >= 0 && positionY >= 0) && (positionX <= 5 && positionY <= 5)) {
-            return new PlateauSize(positionX, positionY);
-        } else {
+        if (stringCoordinates.length > 2) {
             throw new IllegalArgumentException();
+        }
+
+        try {
+            int positionX = Integer.parseInt(stringCoordinates[0]);
+            int positionY = Integer.parseInt(stringCoordinates[1]);
+
+            if ((positionX >= 0 && positionY >= 0) && (positionX <= 5 && positionY <= 5)) {
+                return new PlateauSize(positionX, positionY);
+            } else {
+                throw new IllegalArgumentException();
+            }
+
+        } catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {
+            throw new ArrayIndexOutOfBoundsException();
         }
 
     }

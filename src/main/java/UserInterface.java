@@ -42,7 +42,10 @@ public class UserInterface {
                 String plateauInput = scanner.nextLine();
                 return new Plateau(inputParser.parsePlateauCoordinates(plateauInput));
             } catch (IllegalArgumentException e) {
-                System.out.println(RED + "Coordinates invalid. These must be greater than 0, and not exceed 5." + RESET);
+                System.out.println(RED + "Coordinates invalid. These must be numbers greater than 0, and not exceed 5." + RESET);
+                System.out.print(YELLOW + "Please enter new coordinates (x, y): " + RESET);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println(RED + "Coordinates invalid. Please enter 2 numbers only, separated by a space." + RESET);
                 System.out.print(YELLOW + "Please enter new coordinates (x, y): " + RESET);
             }
         }

@@ -34,10 +34,26 @@ class InputParserTest {
 
     @Test
     @DisplayName("Invalid coordinates over 5 throw IllegalArgumentException")
-    void parsePlateauCoordinatesTest3() {
+    void parsePlateauCoordinatesException1() {
         assertThrows(IllegalArgumentException.class, () -> ip.parsePlateauCoordinates("6 0"));
         assertThrows(IllegalArgumentException.class, () -> ip.parsePlateauCoordinates("0 6"));
         assertThrows(IllegalArgumentException.class, () -> ip.parsePlateauCoordinates("7 -1"));
+    }
+
+    @Test
+    @DisplayName("Too few arguments throws IllegalArgumentException")
+    void parsePlateauCoordinatesException2() {
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> ip.parsePlateauCoordinates(""));
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> ip.parsePlateauCoordinates("0"));
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> ip.parsePlateauCoordinates("-1"));
+    }
+
+    @Test
+    @DisplayName("Too many arguments throws IllegalArgumentException")
+    void parsePlateauCoordinatesException3() {
+        assertThrows(IllegalArgumentException.class, () -> ip.parsePlateauCoordinates("1 2 3"));
+        assertThrows(IllegalArgumentException.class, () -> ip.parsePlateauCoordinates("-1 -3 -6"));
+        assertThrows(IllegalArgumentException.class, () -> ip.parsePlateauCoordinates("0 0 0"));
     }
 
     @Test
