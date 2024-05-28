@@ -38,6 +38,6 @@ The application can be used from the IDE terminal.
 
 - [ ] Implement logic for multiple rovers
 - [ ] Handle collision of rovers on single plateau
-- [ ] Allow rovers to take samples from Mars
+- [x] Allow rovers to take samples from Mars
 - [ ] Add obstacles to the plateau
 - [ ] Implement logic for different types of space vehicle
