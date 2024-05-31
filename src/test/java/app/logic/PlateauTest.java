@@ -37,15 +37,20 @@ class PlateauTest {
         PlateauSize ps = new PlateauSize(5, 5);
         Plateau plateau = new Plateau(ps);
         MissionControl ms = new MissionControl(plateau);
-        Rover rover = new Rover(new Position(3, 3, Direction.N));
-        ms.addRover(rover, 3, 3);
 
-        assertTrue(plateau.locationIsEmpty(1, 2));
+        Rover rover  = new Rover(new Position(3, 3, Direction.N));
+        Rover rover2 = new Rover(new Position(1, 2, Direction.E));
+
+        ms.addRover(rover, 3, 3);
+        ms.addRover(rover, 1, 2);
+
+        assertTrue(plateau.locationIsEmpty(1, 5));
         assertTrue(plateau.locationIsEmpty(3, 4));
         assertTrue(plateau.locationIsEmpty(5, 5));
         assertTrue(plateau.locationIsEmpty(0, 0));
 
         assertFalse(plateau.locationIsEmpty(3, 3));
+        assertFalse(plateau.locationIsEmpty(1, 2));
 
     }
 
