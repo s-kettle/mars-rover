@@ -1,4 +1,5 @@
-# The Mars Rover Project 🚀
+
+![Space Age](https://github.com/s-kettle/mars-rover/assets/156723890/1c0eaf7e-6b15-44a4-a223-090fcea03964)
 
 ## The Brief
 
@@ -17,6 +18,9 @@ Once the rover is placed, it is programmed to accept a string of instructions:
 - R - rotate the rover 90° clockwise
 
 This information is received as a single string of format: MLR.
+
+### Sample data
+Once the rover has moved to a new location on the plateau, it will automatically sample the location. The rover may find titanium, aluminium, tin, copper or gold on the surface. This is randomly generated for each plateau instance.
 
 ### Example input
 
