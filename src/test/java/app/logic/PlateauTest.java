@@ -1,5 +1,6 @@
 package app.logic;
 
+import app.datatypes.CollisionException;
 import app.datatypes.Direction;
 import app.datatypes.PlateauSize;
 import app.datatypes.Position;
@@ -41,8 +42,12 @@ class PlateauTest {
         Rover rover  = new Rover(new Position(3, 3, Direction.N));
         Rover rover2 = new Rover(new Position(1, 2, Direction.E));
 
-        ms.addRover(rover, 3, 3);
-        ms.addRover(rover, 1, 2);
+        try {
+            ms.addRover(rover, 3, 3);
+            ms.addRover(rover2, 1, 2);
+        } catch (CollisionException e) {
+            System.out.println(e.getMessage());
+        }
 
         assertTrue(plateau.locationIsEmpty(1, 5));
         assertTrue(plateau.locationIsEmpty(3, 4));
