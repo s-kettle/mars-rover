@@ -32,6 +32,7 @@ public class UserInterface {
             printRoverSuccessMessage();
             getInstructionInput();
             printImplementation();
+            System.out.println(missionControl.instructRoverToTakeSample());
             isUserFinished();
         }
     }

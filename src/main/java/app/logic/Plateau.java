@@ -1,7 +1,6 @@
 package app.logic;
 
 import app.datatypes.PlateauSize;
-import app.sampletype.Titanium;
 
 import java.util.Random;
 

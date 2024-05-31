@@ -4,15 +4,11 @@ import app.datatypes.Direction;
 import app.datatypes.IllegalMovementException;
 import app.datatypes.Instruction;
 import app.datatypes.Position;
-import app.sampletype.Mineral;
-
-import java.util.Map;
 
 public class Rover {
 
     private final String name;
     private final Position position;
-    private Map<Mineral, Integer> cargoHold;
 
     public Rover(Position position) {
         this.name = "Mars app.logic.Rover";
