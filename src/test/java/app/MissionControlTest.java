@@ -20,13 +20,13 @@ class MissionControlTest {
     Plateau plateau = new Plateau(new PlateauSize(5, 5));
     MissionControl missionControl = new MissionControl(plateau);
     Position p = new Position(Direction.N);
-    Rover rover = new Rover(p, "Test app.logic.Rover");
+    Rover rover = new Rover(p, "Test Rover");
 
     @Test
     @DisplayName("Mission control can add a rover")
     void addRover() {
 
-        missionControl.addRover(rover);
+        missionControl.addRover(rover, p.getX(), p.getY());
         assertEquals(missionControl.getRover(), rover);
 
     }
@@ -40,7 +40,7 @@ class MissionControlTest {
         ));
         Position expectedPosition = new Position(1, 2, Direction.E);
 
-        missionControl.addRover(rover);
+        missionControl.addRover(rover, p.getX(), p.getY());
         missionControl.setInstructions(instructionList);
         missionControl.implementInstructions();
 

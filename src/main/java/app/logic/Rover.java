@@ -11,7 +11,7 @@ public class Rover implements SpaceVehicle {
     private final Position position;
 
     public Rover(Position position) {
-        this.name = "Mars app.logic.Rover";
+        this.name = "Mars Rover";
         this.position = position;
     }
 

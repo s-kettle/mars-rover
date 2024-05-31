@@ -71,7 +71,7 @@ public class UserInterface {
             try {
                 Position roverPositionInput = inputParser.parsePosition(scanner.nextLine());
                 Rover rover = new Rover(roverPositionInput, roverNameInput);
-                missionControl.addRover(rover);
+                missionControl.addRover(rover, rover.getPosition().getX(), rover.getPosition().getY());
                 break;
             } catch (ArrayIndexOutOfBoundsException e) {
                 System.out.println(RED + "Invalid input. Enter 3 space-separated values: x y d" + RESET);
