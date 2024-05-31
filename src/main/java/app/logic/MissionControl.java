@@ -45,6 +45,8 @@ public class MissionControl {
                     switch (currentRover.getPosition().getFacing()) {
                         case N -> {
                             if (plateau.locationIsEmpty(currentRover.getPosition().getX(), currentRover.getPosition().getY() + 1)) {
+                                plateau.updateRoverLocation(currentRover, currentRover.getPosition(),
+                                        currentRover.getPosition().getX(), currentRover.getPosition().getY() + 1);
                                 currentRover.move();
                             } else {
                                 throw new CollisionException("Collision! Aborting.");
@@ -52,6 +54,8 @@ public class MissionControl {
                         }
                         case E -> {
                             if (plateau.locationIsEmpty(currentRover.getPosition().getX() + 1, currentRover.getPosition().getY())) {
+                                plateau.updateRoverLocation(currentRover, currentRover.getPosition(),
+                                        currentRover.getPosition().getX() + 1, currentRover.getPosition().getY());
                                 currentRover.move();
                             } else {
                                 throw new CollisionException("Collision! Aborting.");
@@ -59,6 +63,8 @@ public class MissionControl {
                         }
                         case S -> {
                             if (plateau.locationIsEmpty(currentRover.getPosition().getX(), currentRover.getPosition().getY() - 1)) {
+                                plateau.updateRoverLocation(currentRover, currentRover.getPosition(),
+                                        currentRover.getPosition().getX(), currentRover.getPosition().getY() - 1);
                                 currentRover.move();
                             } else {
                                 throw new CollisionException("Collision! Aborting.");
@@ -66,6 +72,8 @@ public class MissionControl {
                         }
                         case W -> {
                             if (plateau.locationIsEmpty(currentRover.getPosition().getX() - 1, currentRover.getPosition().getY())) {
+                                plateau.updateRoverLocation(currentRover, currentRover.getPosition(),
+                                        currentRover.getPosition().getX() - 1, currentRover.getPosition().getY());
                                 currentRover.move();
                             } else {
                                 throw new CollisionException("Collision! Aborting.");

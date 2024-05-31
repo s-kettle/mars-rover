@@ -81,7 +81,7 @@ public class UserInterface {
                 System.out.println(RED + "Coordinates cannot be out of plateau bounds" + RESET);
                 System.out.print(YELLOW + "Please enter correct positional data: " + RESET);
             } catch (CollisionException e) {
-                System.out.println(RED + e.getMessage());
+                System.out.println(RED + e.getMessage() + RESET);
                 System.out.println(YELLOW + "Please enter new landing coordinates.");
             }
         }
@@ -124,7 +124,7 @@ public class UserInterface {
         try {
             missionControl.implementInstructions();
         } catch (CollisionException e) {
-            System.out.println(RED + e.getMessage());
+            System.out.println(RED + e.getMessage() + RESET);
         }
 
         missionControl.printRoverLocation();

@@ -16,9 +16,10 @@ class MissionControlTest {
 
     Plateau plateau = new Plateau(new PlateauSize(5, 5));
     MissionControl missionControl = new MissionControl(plateau);
-    Position p = new Position(Direction.N);
-    Rover rover = new Rover(p, "Test Rover");
-    Rover rover2 = new Rover(p, "Test Rover2");
+    Position p  = new Position(Direction.N);
+    Position p2 = new Position(1, 0, Direction.E);
+    Rover rover  = new Rover(p, "Test Rover");
+    Rover rover2 = new Rover(p2, "Test Rover2");
 
     @Test()
     @DisplayName("Mission control can add a rover")
@@ -64,13 +65,6 @@ class MissionControlTest {
         assertEquals(expectedPosition.getX(), missionControl.getRover().getPosition().getX());
         assertEquals(expectedPosition.getY(), missionControl.getRover().getPosition().getY());
         assertEquals(expectedPosition.getFacing(), missionControl.getRover().getPosition().getFacing());
-    }
-
-    @Test
-    @DisplayName("CollisionException thrown if instructions cause collision.")
-    void implementInstructions2() {
-
-
     }
 
 }

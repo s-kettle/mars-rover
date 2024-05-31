@@ -1,6 +1,7 @@
 package app.logic;
 
 import app.datatypes.PlateauSize;
+import app.datatypes.Position;
 
 import java.util.Random;
 
@@ -25,6 +26,11 @@ public class Plateau {
     }
 
     public void addRoverLocation(Rover rover, int x, int y) {
+        this.roverLocations[x][y] = rover;
+    }
+
+    public void updateRoverLocation(Rover rover, Position oldPosition, int x, int y) {
+        this.roverLocations[oldPosition.getX()][oldPosition.getY()] = null;
         this.roverLocations[x][y] = rover;
     }
 
