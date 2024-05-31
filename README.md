@@ -19,6 +19,9 @@ Once the rover is placed, it is programmed to accept a string of instructions:
 
 This information is received as a single string of format: MLR.
 
+### Sample data
+Once the rover has moved to a new location on the plateau, it will automatically sample the location. The rover may find titanium, aluminium, tin, copper or gold on the surface. This is randomly generated for each plateau instance.
+
 ### Example input
 
 A plateau is created with the input `5 5`.\
