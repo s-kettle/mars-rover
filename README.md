@@ -40,8 +40,8 @@ The application can be used from the IDE terminal.
 
 ## Future considerations
 
-- [ ] Implement logic for multiple rovers
-- [ ] Handle collision of rovers on single plateau
+- [x] Implement logic for multiple rovers
+- [x] Handle collision of rovers on single plateau
 - [x] Allow rovers to take samples from Mars
 - [ ] Add obstacles to the plateau
 - [x] Create an interface for space vehicles
