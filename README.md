@@ -44,4 +44,5 @@ The application can be used from the IDE terminal.
 - [ ] Handle collision of rovers on single plateau
 - [x] Allow rovers to take samples from Mars
 - [ ] Add obstacles to the plateau
+- [x] Create an interface for space vehicles
 - [ ] Implement logic for different types of space vehicle
