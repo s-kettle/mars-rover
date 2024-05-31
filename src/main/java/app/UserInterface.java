@@ -1,5 +1,6 @@
 package app;
 
+import app.datatypes.CollisionException;
 import app.datatypes.Position;
 import app.logic.MissionControl;
 import app.logic.Plateau;
@@ -71,7 +72,7 @@ public class UserInterface {
             try {
                 Position roverPositionInput = inputParser.parsePosition(scanner.nextLine());
                 Rover rover = new Rover(roverPositionInput, roverNameInput);
-                missionControl.addRover(rover);
+                missionControl.addRover(rover, roverPositionInput.getX(), roverPositionInput.getY());
                 break;
             } catch (ArrayIndexOutOfBoundsException e) {
                 System.out.println(RED + "Invalid input. Enter 3 space-separated values: x y d" + RESET);
@@ -79,6 +80,9 @@ public class UserInterface {
             } catch (IllegalArgumentException e) {
                 System.out.println(RED + "Coordinates cannot be out of plateau bounds" + RESET);
                 System.out.print(YELLOW + "Please enter correct positional data: " + RESET);
+            } catch (CollisionException e) {
+                System.out.println(RED + e.getMessage() + RESET);
+                System.out.println(YELLOW + "Please enter new landing coordinates.");
             }
         }
     }
@@ -117,7 +121,12 @@ public class UserInterface {
     }
 
     public void printImplementation() {
-        missionControl.implementInstructions();
+        try {
+            missionControl.implementInstructions();
+        } catch (CollisionException e) {
+            System.out.println(RED + e.getMessage() + RESET);
+        }
+
         missionControl.printRoverLocation();
     }
 

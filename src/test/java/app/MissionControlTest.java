@@ -1,9 +1,6 @@
 package app;
 
-import app.datatypes.Direction;
-import app.datatypes.Instruction;
-import app.datatypes.PlateauSize;
-import app.datatypes.Position;
+import app.datatypes.*;
 import app.logic.MissionControl;
 import app.logic.Plateau;
 import app.logic.Rover;
@@ -19,20 +16,37 @@ class MissionControlTest {
 
     Plateau plateau = new Plateau(new PlateauSize(5, 5));
     MissionControl missionControl = new MissionControl(plateau);
-    Position p = new Position(Direction.N);
-    Rover rover = new Rover(p, "Test app.logic.Rover");
+    Position p  = new Position(Direction.N);
+    Position p2 = new Position(1, 0, Direction.E);
+    Rover rover  = new Rover(p, "Test Rover");
+    Rover rover2 = new Rover(p2, "Test Rover2");
 
-    @Test
+    @Test()
     @DisplayName("Mission control can add a rover")
     void addRover() {
 
-        missionControl.addRover(rover);
+        try {
+            missionControl.addRover(rover, p.getX(), p.getY());
+        } catch (CollisionException e) {
+            System.out.println(e.getMessage());
+        }
         assertEquals(missionControl.getRover(), rover);
+    }
+
+    @Test()
+    @DisplayName("Mission control cannot add a rover on same landing site")
+    void addRover2() {
+
+        assertThrows(CollisionException.class, () -> {
+            missionControl.addRover(rover, p.getX(), p.getY());
+            missionControl.addRover(rover2, p.getX(), p.getY());
+        });
 
     }
 
+
     @Test
-    @DisplayName("app.logic.MissionControl implements instructions for rover")
+    @DisplayName("MissionControl implements instructions for rover")
     void implementInstructions() {
 
         List<Instruction> instructionList = new ArrayList<>(List.of(
@@ -40,12 +54,17 @@ class MissionControlTest {
         ));
         Position expectedPosition = new Position(1, 2, Direction.E);
 
-        missionControl.addRover(rover);
-        missionControl.setInstructions(instructionList);
-        missionControl.implementInstructions();
+        try {
+            missionControl.addRover(rover, p.getX(), p.getY());
+            missionControl.setInstructions(instructionList);
+            missionControl.implementInstructions();
+        } catch (CollisionException e) {
+            System.out.println(e.getMessage());
+        }
 
         assertEquals(expectedPosition.getX(), missionControl.getRover().getPosition().getX());
         assertEquals(expectedPosition.getY(), missionControl.getRover().getPosition().getY());
         assertEquals(expectedPosition.getFacing(), missionControl.getRover().getPosition().getFacing());
     }
+
 }
