@@ -1,4 +1,5 @@
-# The Mars Rover Project 🚀
+
+![Space Age](https://github.com/s-kettle/mars-rover/assets/156723890/1c0eaf7e-6b15-44a4-a223-090fcea03964)
 
 ## The Brief
 
