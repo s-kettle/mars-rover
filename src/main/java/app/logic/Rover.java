@@ -5,7 +5,7 @@ import app.datatypes.IllegalMovementException;
 import app.datatypes.Instruction;
 import app.datatypes.Position;
 
-public class Rover {
+public class Rover implements SpaceVehicle {
 
     private final String name;
     private final Position position;
